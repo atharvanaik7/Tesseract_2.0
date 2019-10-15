@@ -1,5 +1,6 @@
 #include "main.h"
-int count = 0;
+#include "gif-pros/gifclass.hpp"
+int count = 1;
 
 /**
  * A callback function for LLEMU's center button.
@@ -23,22 +24,23 @@ void initialize() {
 
 	if(pros::competition::is_autonomous()) { // change to is_disabled()
 		while(auton_num == 0) {
-				if(rightsensor.get_new_press() == 1) {
+			 if(rightsensor.get_new_press() == 1 && count < 2) { // change count number when adding more
 					count += 1;
 				}
-				else if(leftsensor.get_new_press() == 1 && count > 1) {
+			 else if(leftsensor.get_new_press() == 1 && count > 1) {
 					count -= 1;
 				}
-				if(count == 1) {
+			 if(count == 1) {
 					redbackscr();
 				}
-				else if(count == 2) {
+			 else if(count == 2) {
 					bluebackscr();
 				}
-			pros::delay(30);
-		}
-	}
+		 pros::delay(30);
+	 }
+ }
 	display();
+	// Gif gif("/usd/tesseractres.gif", lv_scr_act());
 }
 
 /**
@@ -74,10 +76,10 @@ void autonomous() {
 	brakeMode();
 
 	// test();
-	// switch(auton_num) {
-	//   case 1: redback(); break;
-	//   case 2: blueback(); break;
-	// }
+	switch(auton_num) {
+	  case 1: redback(); break;
+	  case 2: blueback(); break;
+	}
 
 	coastMode();
 }
@@ -96,6 +98,8 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
+
+	// Gif gif("/usd/tesseractres.gif", lv_scr_act());
 	while (true) {
 
 		driveOp();

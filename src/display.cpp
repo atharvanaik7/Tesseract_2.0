@@ -1,4 +1,6 @@
 #include "main.h"
+#include "gif-pros/gifclass.hpp"
+
 int auton_num;
 
 static lv_res_t btn1_auton(lv_obj_t * btn) { auton_num = 1; return LV_RES_OK; } //redback
@@ -16,6 +18,17 @@ void display() {
   lv_obj_t *scr = lv_obj_create(NULL, NULL);
   lv_obj_set_style(scr, &background_style);
   lv_scr_load(scr);
+
+  // gif
+
+  // Gif* gif = new Gif("/usd/tesseractwhite.gif", lv_scr_act());
+
+  // lv_obj_t* obj = lv_obj_create(lv_scr_act(), NULL);
+  // lv_obj_set_size(obj, 100, 100);
+  // lv_obj_set_style(obj, &lv_style_transp); // make the container invisible
+  // lv_obj_align(obj, NULL, LV_ALIGN_CENTER, 0, 0);
+  //
+  // Gif gif("/usd/tesseractres.gif", obj);
 
   // styles
   static lv_style_t title_style;
