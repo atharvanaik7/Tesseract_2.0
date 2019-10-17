@@ -48,6 +48,12 @@ void blueback(){
   driveTask(100, -15, 0); // drive back
   tiltBack(); // put angler down
 }
+void redfront() {
+
+}
+void bluefront() {
+  
+}
 void test(){
   intakeAuto(-0.4);
   tiltMove(1.65);

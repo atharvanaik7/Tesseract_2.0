@@ -3,6 +3,8 @@
 
 void redback();
 void blueback();
+void redfront();
+void bluefront();
 void test();
 
 #endif

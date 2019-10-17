@@ -4,5 +4,7 @@
 void display();
 void redbackscr();
 void bluebackscr();
+void bluefrontscr();
+void redfrontscr();
 
 #endif

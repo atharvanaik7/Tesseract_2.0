@@ -1,13 +1,15 @@
 #include "main.h"
 #include "gif-pros/gifclass.hpp"
 
+extern Gif gif;
+
 int auton_num;
 
 static lv_res_t btn1_auton(lv_obj_t * btn) { auton_num = 1; return LV_RES_OK; } //redback
 static lv_res_t btn2_auton(lv_obj_t * btn) { auton_num = 2; return LV_RES_OK; } // blueblack
 
 
-void display() {
+void display() {  // tesseract gif with tesseract text at bottom runs during opcontrol
 
   // init display
   static lv_style_t background_style;
@@ -21,14 +23,12 @@ void display() {
 
   // gif
 
-  // Gif* gif = new Gif("/usd/tesseractwhite.gif", lv_scr_act());
+  lv_obj_t* obj = lv_obj_create(lv_scr_act(), NULL);
+  lv_obj_set_size(obj, 165, 165);
+  lv_obj_set_style(obj, &lv_style_transp);
+  lv_obj_align(obj, NULL, LV_ALIGN_CENTER, 0, -20);
 
-  // lv_obj_t* obj = lv_obj_create(lv_scr_act(), NULL);
-  // lv_obj_set_size(obj, 100, 100);
-  // lv_obj_set_style(obj, &lv_style_transp); // make the container invisible
-  // lv_obj_align(obj, NULL, LV_ALIGN_CENTER, 0, 0);
-  //
-  // Gif gif("/usd/tesseractres.gif", obj);
+  Gif* gif = new Gif ("/usd/tesseractres.gif", obj);
 
   // styles
   static lv_style_t title_style;
@@ -40,10 +40,10 @@ void display() {
   lv_obj_t *tesseract_title = lv_label_create(scr, NULL);
   lv_obj_set_style(tesseract_title, &title_style);
   lv_label_set_text(tesseract_title, "TESSERACT");
-  lv_obj_align(tesseract_title, NULL, LV_ALIGN_CENTER, 0, 0);
+  lv_obj_align(tesseract_title, NULL, LV_ALIGN_IN_BOTTOM_MID, 0, -10);
 }
 
-void redbackscr() {
+void redbackscr() { // red back scr with text runs during comp disabled
   // init display
   static lv_style_t background_style;
   lv_style_copy(&background_style, &lv_style_plain);
@@ -83,7 +83,7 @@ void redbackscr() {
   lv_label_set_text(label, "RED BACK");
 }
 
-void bluebackscr() {
+void bluebackscr() { // blue back scr with text runs during comp disabled
   // init display
   static lv_style_t background_style;
   lv_style_copy(&background_style, &lv_style_plain);
@@ -121,4 +121,10 @@ void bluebackscr() {
 
   label = lv_label_create(btn1, NULL);
   lv_label_set_text(label, "BLUE BACK");
+}
+void redfrontscr() {
+
+}
+void bluefrontscr() {
+  
 }

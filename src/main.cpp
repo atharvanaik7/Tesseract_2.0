@@ -36,7 +36,7 @@ void initialize() {
 			 else if(count == 2) {
 					bluebackscr();
 				}
-		 pros::delay(30);
+		 pros::delay(10);
 	 }
  }
 	display();
@@ -99,7 +99,6 @@ void autonomous() {
  */
 void opcontrol() {
 
-	// Gif gif("/usd/tesseractres.gif", lv_scr_act());
 	while (true) {
 
 		driveOp();
