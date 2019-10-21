@@ -8,5 +8,6 @@ void tiltAuto();
 void tiltMove(double rot);
 void intakeAuto(double rot);
 void tiltBack();
+void intakeSpeed(double rot, int speed);
 
 #endif

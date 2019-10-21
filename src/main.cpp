@@ -24,7 +24,7 @@ void initialize() {
 
 	if(pros::competition::is_autonomous()) { // change to is_disabled()
 		while(auton_num == 0) {
-			 if(rightsensor.get_new_press() == 1 && count < 2) { // change count number when adding more
+			 if(rightsensor.get_new_press() == 1 && count < 4) { // change count number when adding more
 					count += 1;
 				}
 			 else if(leftsensor.get_new_press() == 1 && count > 1) {
@@ -36,6 +36,12 @@ void initialize() {
 			 else if(count == 2) {
 					bluebackscr();
 				}
+			 else if(count == 3) {
+				 bluefrontscr();
+			 }
+			 else if(count == 4) {
+				 redfrontscr();
+			 }
 		 pros::delay(10);
 	 }
  }
@@ -79,7 +85,11 @@ void autonomous() {
 	switch(auton_num) {
 	  case 1: redback(); break;
 	  case 2: blueback(); break;
+		case 3: bluefront(); break;
+		case 4: redfront(); break;
 	}
+
+	// bluefront();
 
 	coastMode();
 }
@@ -98,7 +108,6 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-
 	while (true) {
 
 		driveOp();

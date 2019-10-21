@@ -66,7 +66,7 @@ void tiltMove(double rot) {
     cv = tilt.get_position();
 
     error = (sp - cv);
-    velocity = error*32.5+5;
+    velocity = error*44.4+10;
 
     tilt.move_velocity(velocity);
 
@@ -91,4 +91,8 @@ void intakeAuto(double rot) {
     intakeleft.move_relative(-rot, 200);
     intakeright.move_relative(rot, 200);
   }
+}
+void intakeSpeed(double rot, int speed) {
+  intakeleft.move_relative(-rot, speed);
+  intakeright.move_relative(rot, speed);
 }
