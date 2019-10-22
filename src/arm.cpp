@@ -22,3 +22,13 @@ void armOp() {
     arm.move(0);
   }
 }
+
+void armAuto(double rot, int speed) {
+  arm.move_absolute(rot, speed);
+  if(rot == 0) {
+    tiltMove(-1);
+  }
+  else {
+    tiltMove(1);
+  }
+}

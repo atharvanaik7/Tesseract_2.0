@@ -6,5 +6,6 @@ void blueback();
 void redfront();
 void bluefront();
 void test();
+void skills();
 
 #endif

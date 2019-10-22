@@ -22,7 +22,7 @@ void initialize() {
 	intakeleft.set_brake_mode(MOTOR_BRAKE_BRAKE);
 	intakeright.set_brake_mode(MOTOR_BRAKE_BRAKE);
 
-	if(pros::competition::is_autonomous()) { // change to is_disabled()
+	if(pros::competition::is_disabled()) { // change to is_disabled()
 		while(auton_num == 0) {
 			 if(rightsensor.get_new_press() == 1 && count < 4) { // change count number when adding more
 					count += 1;
@@ -82,14 +82,14 @@ void autonomous() {
 	brakeMode();
 
 	// test();
-	switch(auton_num) {
-	  case 1: redback(); break;
-	  case 2: blueback(); break;
-		case 3: bluefront(); break;
-		case 4: redfront(); break;
-	}
+	// switch(auton_num) {
+	//   case 1: redback(); break;
+	//   case 2: blueback(); break;
+	// 	case 3: bluefront(); break;
+	// 	case 4: redfront(); break;
+	// }
 
-	// bluefront();
+	skills();
 
 	coastMode();
 }
