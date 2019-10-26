@@ -23,10 +23,10 @@ void armOp() {
   }
 }
 
-void armAuto(double rot, int speed) {
-  arm.move_absolute(rot, speed);
-  if(rot == 0) {
-    tiltMove(-1);
+void armAuto(double rot, int speed) { // @param enter pos rot for move up enter neg for move down
+  arm.move_relative(-rot, speed);
+  if(rot < 0) {
+    tilt.move_absolute(0, 180);
   }
   else {
     tiltMove(1);

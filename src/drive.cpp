@@ -1,15 +1,21 @@
 #include "main.h"
 #include "okapi/api.hpp"
-
+double drive_multiplier = 0;
 
 // pros::Controller master(CONTROLLER_MASTER);
 void driveOp() {
   pros::Controller master(CONTROLLER_MASTER);
 
-  front_left.move(master.get_analog(ANALOG_LEFT_Y) + (master.get_analog(ANALOG_RIGHT_X) * 0.75));
-  front_right.move(-master.get_analog(ANALOG_LEFT_Y) + (master.get_analog(ANALOG_RIGHT_X) * 0.75));
-  back_left.move(master.get_analog(ANALOG_LEFT_Y) + (master.get_analog(ANALOG_RIGHT_X) * 0.75));
-  back_right.move(-master.get_analog(ANALOG_LEFT_Y) + (master.get_analog(ANALOG_RIGHT_X) * 0.75));
+  if(arm.get_position() <= -2) {
+    drive_multiplier = 0.4;
+  }
+  else {
+    drive_multiplier = 0.75;
+  }
+  front_left.move(master.get_analog(ANALOG_LEFT_Y) + (master.get_analog(ANALOG_RIGHT_X) * drive_multiplier));
+  front_right.move(-master.get_analog(ANALOG_LEFT_Y) + (master.get_analog(ANALOG_RIGHT_X) * drive_multiplier));
+  back_left.move(master.get_analog(ANALOG_LEFT_Y) + (master.get_analog(ANALOG_RIGHT_X) * drive_multiplier));
+  back_right.move(-master.get_analog(ANALOG_LEFT_Y) + (master.get_analog(ANALOG_RIGHT_X) * drive_multiplier));
 
 }
 
@@ -73,7 +79,7 @@ void rotateTask(double rot, int ms) {
   if(rot < 0) {sp = rot*3.32;}
   else {sp = rot*3.68;}
   double cv;
-  double kp = 200;
+  double kp = 180;
   double kd = 100;
   double error = 0;
   double prev_error;

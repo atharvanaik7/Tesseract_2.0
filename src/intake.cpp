@@ -43,17 +43,21 @@ void tiltOp() {
 double cv;
 double error = 0;
 int velocity = 0;
+double kp = 60;
 
 void tiltAuto(){
   double sp = 2.0;
     cv = tilt.get_position();
 
     error = (sp - cv);
-    velocity = error*32.5+5;
+    velocity = error*kp;
+
+    if(velocity > 100) {velocity = 100;}
+    if(velocity < 5) {velocity = 5;}
 
     tilt.move_velocity(velocity);
 
-    if(error <= 0.1) {
+    if(error <= 0.01) {
       tilt.move_velocity(0);
       // break;
     }

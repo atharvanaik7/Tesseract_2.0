@@ -6,5 +6,6 @@ void redbackscr();
 void bluebackscr();
 void bluefrontscr();
 void redfrontscr();
+void skillsscr();
 
 #endif
