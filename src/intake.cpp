@@ -10,8 +10,8 @@ pros::Controller master(CONTROLLER_MASTER);
       intakeleft.move(63);
     }
     else {
-      intakeright.move(-127);
-      intakeleft.move(127);
+      intakeright.move(-80);
+      intakeleft.move(80);
     }
   }
   else if(master.get_digital(DIGITAL_R1) == 1){ //intake
@@ -43,7 +43,7 @@ void tiltOp() {
 double cv;
 double error = 0;
 int velocity = 0;
-double kp = 60;
+double kp = 65;
 
 void tiltAuto(){
   double sp = 2.0;
@@ -52,7 +52,7 @@ void tiltAuto(){
     error = (sp - cv);
     velocity = error*kp;
 
-    if(velocity > 100) {velocity = 100;}
+    if(velocity > 120) {velocity = 120;}
     if(velocity < 5) {velocity = 5;}
 
     tilt.move_velocity(velocity);

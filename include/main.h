@@ -35,6 +35,7 @@
 #define PROS_USE_LITERALS
 #define RIGHT_SENSOR 1
 #define LEFT_SENSOR 2
+#define SELECTOR 3
 
 #include "api.h"
 #include "drive.h"
@@ -42,6 +43,7 @@
 #include "intake.h"
 #include "arm.h"
 #include "display.h"
+#include "macros.h"
 
 extern int auton_num;
 extern int count;

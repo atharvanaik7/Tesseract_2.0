@@ -28,6 +28,13 @@ void drive(int vel) {
   back_right.move_velocity(-vel);
 }
 
+void driveMove(int speed) {
+  front_left.move(speed);
+  front_right.move(-speed);
+  back_left.move(speed);
+  back_right.move(-speed);
+}
+
 void rotate(int vel) {
   front_left.move_velocity(vel);
   front_right.move_velocity(vel);
@@ -39,7 +46,7 @@ void driveTask(int speed, double distance, int ms){
   bool driving = true;
   double sp = distance /= 12.8;
   double cv;
-  double kp = 190;
+  double kp = 230;
   double kd = 100;
   double error = 0;
   double prev_error;
@@ -59,8 +66,8 @@ void driveTask(int speed, double distance, int ms){
 
     if(velocity > speed) {velocity = speed;}
     if(velocity < -speed) {velocity = -speed;}
-    // if(velocity < 20) {velocity = 20;}
-    // if(velocity > -20) {velocity = -20;}
+    if(velocity <= 20 && velocity > 0) {velocity = 20;}
+    if(velocity >= -20 && velocity < 0) {velocity = -20;}
 
     drive(velocity);
 
@@ -79,7 +86,7 @@ void rotateTask(double rot, int ms) {
   if(rot < 0) {sp = rot*3.32;}
   else {sp = rot*3.68;}
   double cv;
-  double kp = 180;
+  double kp = 160;
   double kd = 100;
   double error = 0;
   double prev_error;
@@ -99,8 +106,8 @@ void rotateTask(double rot, int ms) {
 
     if(velocity > 150) {velocity = 150;}
     else if(velocity < -150) {velocity = -150;}
-    // else if (velocity <= 20 && velocity > 0) { velocity = 20; }
-    // else if (velocity >= -20 && velocity < 0) { velocity = -20; }
+    else if (velocity <= 20 && velocity > 0) { velocity = 20; }
+    else if (velocity >= -20 && velocity < 0) { velocity = -20; }
 
     rotate(velocity);
 
