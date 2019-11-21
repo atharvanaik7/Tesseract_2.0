@@ -2,10 +2,10 @@
 #define DISPLAY_H_
 
 void display();
-void redbackscr();
-void bluebackscr();
-void bluefrontscr();
-void redfrontscr();
+void redsmallscr();
+void bluesmallscr();
+void bluebigscr();
+void redbigscr();
 void skillsscr();
 
 #endif

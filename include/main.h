@@ -44,6 +44,7 @@
 #include "arm.h"
 #include "display.h"
 #include "macros.h"
+// #include "okapi/api.hpp"
 
 extern int auton_num;
 extern int count;
@@ -66,7 +67,7 @@ extern pros::Motor arm;
 /**
  * You should add more #includes here
  */
-//#include "okapi/api.hpp"
+#include "okapi/api.hpp"
 //#include "pros/api_legacy.h"
 
 /**
@@ -79,7 +80,7 @@ extern pros::Motor arm;
  */
 // using namespace pros;
 // using namespace pros::literals;
-// using namespace okapi;
+using namespace okapi;
 
 /**
  * Prototypes for the competition control tasks are redefined here to ensure

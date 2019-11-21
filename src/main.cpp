@@ -21,8 +21,8 @@ void initialize() {
 	pros::ADIDigitalIn leftsensor (LEFT_SENSOR);
 	pros::ADIDigitalIn selsensor (SELECTOR);
 
-	intakeleft.set_brake_mode(MOTOR_BRAKE_BRAKE);
-	intakeright.set_brake_mode(MOTOR_BRAKE_BRAKE);
+	// intakeleft.set_brake_mode(MOTOR_BRAKE_BRAKE);
+	// intakeright.set_brake_mode(MOTOR_BRAKE_BRAKE);
 
 	if(pros::competition::is_disabled()) { // change to is_disabled()
 		while(selsensor.get_value() == 0) {
@@ -33,16 +33,16 @@ void initialize() {
 					count -= 1;
 				}
 			 if(count == 1) {
-					redbackscr();
+					redsmallscr();
 				}
 			 else if(count == 2) {
-					bluebackscr();
+					redbigscr();
 				}
 			 else if(count == 3) {
-				 bluefrontscr();
+				 bluesmallscr();
 			 }
 			 else if(count == 4) {
-				 redfrontscr();
+				 bluebigscr();
 			 }
 			 else if(count == 5) {
 				 skillsscr();
@@ -85,15 +85,14 @@ void competition_initialize() {}
 void autonomous() {
 	brakeMode();
 
-	// redback();
-	switch(count) {
-	  case 1: redback(); break;
-	  case 2: blueback(); break;
-		case 3: bluefront(); break;
-		case 4: redfront(); break;
-		case 5: skills(); break;
-	}
-	// blueback();
+	bluesmall();
+	// switch(count) {
+	//   case 1: redsmall(); break;
+	//   case 2: redbig(); break;
+	// 	case 3: bluesmall(); break;
+	// 	case 4: bluebig(); break;
+	// 	case 5: skills(); break;
+	// }
 
 	// skills();
 
@@ -113,6 +112,9 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
+	intakeleft.set_brake_mode(MOTOR_BRAKE_BRAKE);
+	intakeright.set_brake_mode(MOTOR_BRAKE_BRAKE);
+	tilt.set_brake_mode(MOTOR_BRAKE_BRAKE);
 	coastMode();
 	while (true) {
 

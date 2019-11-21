@@ -1,5 +1,6 @@
 #include "main.h"
 #include "okapi/api.hpp"
+
 double drive_multiplier = 0;
 
 // pros::Controller master(CONTROLLER_MASTER);
@@ -18,6 +19,17 @@ void driveOp() {
   back_right.move(-master.get_analog(ANALOG_LEFT_Y) + (master.get_analog(ANALOG_RIGHT_X) * drive_multiplier));
 
 }
+
+// CHASSIS CONTROL
+
+// auto myChassis = ChassisControllerFactory::create(
+//   {-1,-2},
+//   {9,10},
+//   AbstractMotor::gearset::green,
+//   {4_in, 12.5_in}
+// );
+
+// auto profileController = AsyncControllerFactory::motionProfile(1, 2, 10, myChassis);
 
 // DRIVE AUTON FUNCTIONS
 
@@ -46,7 +58,7 @@ void driveTask(int speed, double distance, int ms){
   bool driving = true;
   double sp = distance /= 12.8;
   double cv;
-  double kp = 230;
+  double kp = 250;
   double kd = 100;
   double error = 0;
   double prev_error;
@@ -118,6 +130,69 @@ void rotateTask(double rot, int ms) {
   rotate(0);
   pros::delay(ms);
 }
+
+void slowTask(double rot, int ms) {
+  bool driving = true;
+  rot /= 360;
+  double sp;
+  if(rot < 0) {sp = rot*2.8;}
+  else {sp = rot*2.8;}
+  double cv;
+  double kp = 0;
+  double kd = 1;
+  double ki = 0;
+  double error = 0;
+  double prev_error;
+  int velocity = 0;
+  double derivative;
+  double integral;
+
+  back_left.tare_position();
+  // back_right.tare_position();
+
+  while (driving) {
+    cv = back_left.get_position();
+
+    error = sp - cv;
+    derivative = error - prev_error;
+    integral += error;
+    prev_error = error;
+
+      if(fabs(error) > fabs(sp)*0.5) {
+        kp = 0;
+        ki = 4;
+        kd = 0;
+      }
+      else {
+        kp = 180;
+        ki = 0;
+        kd = 100;
+      }
+
+
+    velocity = error*kp + derivative*kd + integral*ki;
+
+    if(velocity > 180) {velocity = 180;}
+    else if(velocity < -180) {velocity = -180;}
+    // else if (velocity <= 20 && velocity > 0) { velocity = 20; }
+    // else if (velocity >= -20 && velocity < 0) { velocity = -20; }
+
+    rotate(velocity);
+
+    if(error <= 0.05 && error >= -0.05) {driving = false;}
+
+    pros::delay(20);
+  }
+  rotate(0);
+  pros::delay(ms);
+}
+
+// void curve() {
+//   profileController.generatePath({Point{0_in, 0_in, 0_deg}, Point{36_in, 20_in, 0_deg}}, "A");
+//   profileController.setTarget("A");
+//   profileController.waitUntilSettled();
+// }
+
 
 void brakeMode() {
   front_left.set_brake_mode(MOTOR_BRAKE_HOLD);

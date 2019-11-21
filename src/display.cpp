@@ -5,11 +5,11 @@ extern Gif gif;
 
 int auton_num;
 
-static lv_res_t btn1_auton(lv_obj_t * btn) { auton_num = 1; return LV_RES_OK; } //redback
-static lv_res_t btn2_auton(lv_obj_t * btn) { auton_num = 2; return LV_RES_OK; } // blueblack
-static lv_res_t btn3_auton(lv_obj_t * btn) { auton_num = 3; return LV_RES_OK; }
-static lv_res_t btn4_auton(lv_obj_t * btn) { auton_num = 4; return LV_RES_OK; }
-static lv_res_t btn5_auton(lv_obj_t * btn) { auton_num = 5; return LV_RES_OK; }
+// static lv_res_t btn1_auton(lv_obj_t * btn) { auton_num = 1; return LV_RES_OK; } //redback
+// static lv_res_t btn2_auton(lv_obj_t * btn) { auton_num = 2; return LV_RES_OK; } // blueblack
+// static lv_res_t btn3_auton(lv_obj_t * btn) { auton_num = 3; return LV_RES_OK; }
+// static lv_res_t btn4_auton(lv_obj_t * btn) { auton_num = 4; return LV_RES_OK; }
+// static lv_res_t btn5_auton(lv_obj_t * btn) { auton_num = 5; return LV_RES_OK; }
 
 
 void display() {  // tesseract gif with tesseract text at bottom runs during opcontrol
@@ -46,7 +46,7 @@ void display() {  // tesseract gif with tesseract text at bottom runs during opc
   lv_obj_align(tesseract_title, NULL, LV_ALIGN_IN_BOTTOM_MID, 0, -10);
 }
 
-void redbackscr() { // red back scr with text runs during comp disabled
+void redsmallscr() { // red back scr with text runs during comp disabled
   // init display
   static lv_style_t background_style;
   lv_style_copy(&background_style, &lv_style_plain);
@@ -64,29 +64,29 @@ void redbackscr() { // red back scr with text runs during comp disabled
   title_style.text.color = LV_COLOR_BLACK;
 
   //text
-  // lv_obj_t *tesseract_title = lv_label_create(scr, NULL);
-  // lv_obj_set_style(tesseract_title, &title_style);
-  // lv_label_set_text(tesseract_title, "RED BACK");
-  // lv_obj_align(tesseract_title, NULL, LV_ALIGN_CENTER, 0, 0);
+  lv_obj_t *tesseract_title = lv_label_create(scr, NULL);
+  lv_obj_set_style(tesseract_title, &title_style);
+  lv_label_set_text(tesseract_title, "RED SMALL");
+  lv_obj_align(tesseract_title, NULL, LV_ALIGN_CENTER, 0, 0);
 
   //button
-  lv_obj_t * label = lv_label_create(lv_scr_act(), NULL);
-  lv_obj_align(label, NULL, LV_ALIGN_CENTER, 0, 0);
-  lv_obj_set_size(label, 0, 0);
-
-  lv_obj_t * btn1 = lv_btn_create(lv_scr_act(), NULL); // red back
-  lv_cont_set_fit(btn1, false, false);
-  lv_obj_set_size(btn1, 700, 400);
-  lv_obj_align(btn1, label, LV_ALIGN_CENTER, 0, 0);
-  lv_obj_set_free_num(btn1, 1);
-  lv_btn_set_toggle(btn1, true);
-  lv_btn_set_action(btn1, LV_BTN_ACTION_PR, btn1_auton);
-
-  label = lv_label_create(btn1, NULL);
-  lv_label_set_text(label, "RED BACK");
+  // lv_obj_t * label = lv_label_create(lv_scr_act(), NULL);
+  // lv_obj_align(label, NULL, LV_ALIGN_CENTER, 0, 0);
+  // lv_obj_set_size(label, 0, 0);
+  //
+  // lv_obj_t * btn1 = lv_btn_create(lv_scr_act(), NULL); // red back
+  // lv_cont_set_fit(btn1, false, false);
+  // lv_obj_set_size(btn1, 700, 400);
+  // lv_obj_align(btn1, label, LV_ALIGN_CENTER, 0, 0);
+  // lv_obj_set_free_num(btn1, 1);
+  // lv_btn_set_toggle(btn1, true);
+  // lv_btn_set_action(btn1, LV_BTN_ACTION_PR, btn1_auton);
+  //
+  // label = lv_label_create(btn1, NULL);
+  // lv_label_set_text(label, "RED BACK");
 }
 
-void bluebackscr() { // blue back scr with text runs during comp disabled
+void bluesmallscr() { // blue back scr with text runs during comp disabled
   // init display
   static lv_style_t background_style;
   lv_style_copy(&background_style, &lv_style_plain);
@@ -104,28 +104,28 @@ void bluebackscr() { // blue back scr with text runs during comp disabled
   title_style.text.color = LV_COLOR_BLACK;
 
   //text
-  // lv_obj_t *tesseract_title = lv_label_create(scr, NULL);
-  // lv_obj_set_style(tesseract_title, &title_style);
-  // lv_label_set_text(tesseract_title, "RED BACK");
-  // lv_obj_align(tesseract_title, NULL, LV_ALIGN_CENTER, 0, 0);
+  lv_obj_t *tesseract_title = lv_label_create(scr, NULL);
+  lv_obj_set_style(tesseract_title, &title_style);
+  lv_label_set_text(tesseract_title, "BLUE SMALL");
+  lv_obj_align(tesseract_title, NULL, LV_ALIGN_CENTER, 0, 0);
 
   //button
-  lv_obj_t * label = lv_label_create(lv_scr_act(), NULL);
-  lv_obj_align(label, NULL, LV_ALIGN_CENTER, 0, 0);
-  lv_obj_set_size(label, 0, 0);
-
-  lv_obj_t * btn1 = lv_btn_create(lv_scr_act(), NULL); // red back
-  lv_cont_set_fit(btn1, false, false);
-  lv_obj_set_size(btn1, 700, 400);
-  lv_obj_align(btn1, label, LV_ALIGN_CENTER, 0, 0);
-  lv_obj_set_free_num(btn1, 1);
-  lv_btn_set_toggle(btn1, true);
-  lv_btn_set_action(btn1, LV_BTN_ACTION_PR, btn2_auton);
-
-  label = lv_label_create(btn1, NULL);
-  lv_label_set_text(label, "BLUE BACK");
+  // lv_obj_t * label = lv_label_create(lv_scr_act(), NULL);
+  // lv_obj_align(label, NULL, LV_ALIGN_CENTER, 0, 0);
+  // lv_obj_set_size(label, 0, 0);
+  //
+  // lv_obj_t * btn1 = lv_btn_create(lv_scr_act(), NULL); // red back
+  // lv_cont_set_fit(btn1, false, false);
+  // lv_obj_set_size(btn1, 700, 400);
+  // lv_obj_align(btn1, label, LV_ALIGN_CENTER, 0, 0);
+  // lv_obj_set_free_num(btn1, 1);
+  // lv_btn_set_toggle(btn1, true);
+  // lv_btn_set_action(btn1, LV_BTN_ACTION_PR, btn2_auton);
+  //
+  // label = lv_label_create(btn1, NULL);
+  // lv_label_set_text(label, "BLUE BACK");
 }
-void redfrontscr() {
+void redbigscr() {
   // init display
   static lv_style_t background_style;
   lv_style_copy(&background_style, &lv_style_plain);
@@ -143,28 +143,28 @@ void redfrontscr() {
   title_style.text.color = LV_COLOR_BLACK;
 
   //text
-  // lv_obj_t *tesseract_title = lv_label_create(scr, NULL);
-  // lv_obj_set_style(tesseract_title, &title_style);
-  // lv_label_set_text(tesseract_title, "RED BACK");
-  // lv_obj_align(tesseract_title, NULL, LV_ALIGN_CENTER, 0, 0);
+  lv_obj_t *tesseract_title = lv_label_create(scr, NULL);
+  lv_obj_set_style(tesseract_title, &title_style);
+  lv_label_set_text(tesseract_title, "RED BIG");
+  lv_obj_align(tesseract_title, NULL, LV_ALIGN_CENTER, 0, 0);
 
   //button
-  lv_obj_t * label = lv_label_create(lv_scr_act(), NULL);
-  lv_obj_align(label, NULL, LV_ALIGN_CENTER, 0, 0);
-  lv_obj_set_size(label, 0, 0);
-
-  lv_obj_t * btn1 = lv_btn_create(lv_scr_act(), NULL); // red back
-  lv_cont_set_fit(btn1, false, false);
-  lv_obj_set_size(btn1, 700, 400);
-  lv_obj_align(btn1, label, LV_ALIGN_CENTER, 0, 0);
-  lv_obj_set_free_num(btn1, 1);
-  lv_btn_set_toggle(btn1, true);
-  lv_btn_set_action(btn1, LV_BTN_ACTION_PR, btn4_auton);
-
-  label = lv_label_create(btn1, NULL);
-  lv_label_set_text(label, "RED FRONT");
+  // lv_obj_t * label = lv_label_create(lv_scr_act(), NULL);
+  // lv_obj_align(label, NULL, LV_ALIGN_CENTER, 0, 0);
+  // lv_obj_set_size(label, 0, 0);
+  //
+  // lv_obj_t * btn1 = lv_btn_create(lv_scr_act(), NULL); // red back
+  // lv_cont_set_fit(btn1, false, false);
+  // lv_obj_set_size(btn1, 700, 400);
+  // lv_obj_align(btn1, label, LV_ALIGN_CENTER, 0, 0);
+  // lv_obj_set_free_num(btn1, 1);
+  // lv_btn_set_toggle(btn1, true);
+  // lv_btn_set_action(btn1, LV_BTN_ACTION_PR, btn4_auton);
+  //
+  // label = lv_label_create(btn1, NULL);
+  // lv_label_set_text(label, "RED FRONT");
 }
-void bluefrontscr() {
+void bluebigscr() {
   // init display
   static lv_style_t background_style;
   lv_style_copy(&background_style, &lv_style_plain);
@@ -182,26 +182,26 @@ void bluefrontscr() {
   title_style.text.color = LV_COLOR_BLACK;
 
   //text
-  // lv_obj_t *tesseract_title = lv_label_create(scr, NULL);
-  // lv_obj_set_style(tesseract_title, &title_style);
-  // lv_label_set_text(tesseract_title, "RED BACK");
-  // lv_obj_align(tesseract_title, NULL, LV_ALIGN_CENTER, 0, 0);
+  lv_obj_t *tesseract_title = lv_label_create(scr, NULL);
+  lv_obj_set_style(tesseract_title, &title_style);
+  lv_label_set_text(tesseract_title, "RED BIG");
+  lv_obj_align(tesseract_title, NULL, LV_ALIGN_CENTER, 0, 0);
 
   //button
-  lv_obj_t * label = lv_label_create(lv_scr_act(), NULL);
-  lv_obj_align(label, NULL, LV_ALIGN_CENTER, 0, 0);
-  lv_obj_set_size(label, 0, 0);
-
-  lv_obj_t * btn1 = lv_btn_create(lv_scr_act(), NULL); // red back
-  lv_cont_set_fit(btn1, false, false);
-  lv_obj_set_size(btn1, 700, 400);
-  lv_obj_align(btn1, label, LV_ALIGN_CENTER, 0, 0);
-  lv_obj_set_free_num(btn1, 1);
-  lv_btn_set_toggle(btn1, true);
-  lv_btn_set_action(btn1, LV_BTN_ACTION_PR, btn3_auton);
-
-  label = lv_label_create(btn1, NULL);
-  lv_label_set_text(label, "BLUE FRONT");
+  // lv_obj_t * label = lv_label_create(lv_scr_act(), NULL);
+  // lv_obj_align(label, NULL, LV_ALIGN_CENTER, 0, 0);
+  // lv_obj_set_size(label, 0, 0);
+  //
+  // lv_obj_t * btn1 = lv_btn_create(lv_scr_act(), NULL); // red back
+  // lv_cont_set_fit(btn1, false, false);
+  // lv_obj_set_size(btn1, 700, 400);
+  // lv_obj_align(btn1, label, LV_ALIGN_CENTER, 0, 0);
+  // lv_obj_set_free_num(btn1, 1);
+  // lv_btn_set_toggle(btn1, true);
+  // lv_btn_set_action(btn1, LV_BTN_ACTION_PR, btn3_auton);
+  //
+  // label = lv_label_create(btn1, NULL);
+  // lv_label_set_text(label, "BLUE FRONT");
 }
 void skillsscr() {
   // init display
@@ -221,24 +221,24 @@ void skillsscr() {
   title_style.text.color = LV_COLOR_BLACK;
 
   //text
-  // lv_obj_t *tesseract_title = lv_label_create(scr, NULL);
-  // lv_obj_set_style(tesseract_title, &title_style);
-  // lv_label_set_text(tesseract_title, "RED BACK");
-  // lv_obj_align(tesseract_title, NULL, LV_ALIGN_CENTER, 0, 0);
+  lv_obj_t *tesseract_title = lv_label_create(scr, NULL);
+  lv_obj_set_style(tesseract_title, &title_style);
+  lv_label_set_text(tesseract_title, "SKILLS");
+  lv_obj_align(tesseract_title, NULL, LV_ALIGN_CENTER, 0, 0);
 
   //button
-  lv_obj_t * label = lv_label_create(lv_scr_act(), NULL);
-  lv_obj_align(label, NULL, LV_ALIGN_CENTER, 0, 0);
-  lv_obj_set_size(label, 0, 0);
-
-  lv_obj_t * btn1 = lv_btn_create(lv_scr_act(), NULL); // red back
-  lv_cont_set_fit(btn1, false, false);
-  lv_obj_set_size(btn1, 700, 400);
-  lv_obj_align(btn1, label, LV_ALIGN_CENTER, 0, 0);
-  lv_obj_set_free_num(btn1, 1);
-  lv_btn_set_toggle(btn1, true);
-  lv_btn_set_action(btn1, LV_BTN_ACTION_PR, btn5_auton);
-
-  label = lv_label_create(btn1, NULL);
-  lv_label_set_text(label, "SKILLS");
+  // lv_obj_t * label = lv_label_create(lv_scr_act(), NULL);
+  // lv_obj_align(label, NULL, LV_ALIGN_CENTER, 0, 0);
+  // lv_obj_set_size(label, 0, 0);
+  //
+  // lv_obj_t * btn1 = lv_btn_create(lv_scr_act(), NULL); // red back
+  // lv_cont_set_fit(btn1, false, false);
+  // lv_obj_set_size(btn1, 700, 400);
+  // lv_obj_align(btn1, label, LV_ALIGN_CENTER, 0, 0);
+  // lv_obj_set_free_num(btn1, 1);
+  // lv_btn_set_toggle(btn1, true);
+  // lv_btn_set_action(btn1, LV_BTN_ACTION_PR, btn5_auton);
+  //
+  // label = lv_label_create(btn1, NULL);
+  // lv_label_set_text(label, "SKILLS");
 }

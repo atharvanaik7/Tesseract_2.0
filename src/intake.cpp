@@ -43,17 +43,17 @@ void tiltOp() {
 double cv;
 double error = 0;
 int velocity = 0;
-double kp = 65;
+double kp = 75;
 
-void tiltAuto(){
+void tiltAuto(){ // opcontrol change this
   double sp = 2.0;
     cv = tilt.get_position();
 
     error = (sp - cv);
     velocity = error*kp;
 
-    if(velocity > 120) {velocity = 120;}
-    if(velocity < 5) {velocity = 5;}
+    if(velocity > 200) {velocity = 200;}
+    if(velocity < 10) {velocity = 10;}
 
     tilt.move_velocity(velocity);
 
@@ -64,13 +64,13 @@ void tiltAuto(){
 }
 
 
-void tiltMove(double rot) {
+void tiltMove(double rot) { // this is auton pretty much change lol
   double sp = rot;
   while (cv <= 2) {
     cv = tilt.get_position();
 
     error = (sp - cv);
-    velocity = error*44.4+10;
+    velocity = error*44.4+10; // change to 200 as max val
 
     tilt.move_velocity(velocity);
 

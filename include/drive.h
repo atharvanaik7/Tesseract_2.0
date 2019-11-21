@@ -6,6 +6,8 @@ void drive(int vel);
 void driveMove(int speed);
 void driveTask(int speed, double distance, int ms);
 void rotateTask(double rot, int ms);
+void slowTask(double rot, int ms);
+void curve();
 void brakeMode();
 void coastMode();
 

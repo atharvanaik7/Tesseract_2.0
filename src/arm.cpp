@@ -12,11 +12,6 @@ void armOp() {
   }
   else if(master.get_digital(DIGITAL_DOWN) == 1){ // down
     arm.move(127);
-    pros::delay(100);
-    tilt.move(-127);
-    if(tilt.get_position() <= 0.1) {
-      tilt.move(0);
-    }
   }
   else {
     arm.move(0);
