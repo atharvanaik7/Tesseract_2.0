@@ -28,8 +28,8 @@ void redsmall() {
   intakeAuto(9); // start intake
   driveTask(110, 32, 150); // drive into cubes
   // rotateTask(119, 0); // rotate towards corner goal
-  slowTask(110, 0);
-  driveTask(125, 43, 50); // drive forward to drop inside the corner goal
+  slowTask(130, 100);
+  driveAccel(160, 42, 50); // drive forward to drop inside the corner goal
   dropCubes(); // drop cubes
 
 }
@@ -40,14 +40,14 @@ void bluesmall(){
   intakeAuto(10); // start intake
   driveTask(120, 39, 0); // drive forward to suck up cubes
   // driveTask(125, -6, 100); // drive back
-  slowTask(-36, 100); // rotate to angle for next set of cubes
+  slowTask(-34, 100); // rotate to angle for next set of cubes
   driveTask(200, -38, 50); // drive back to be parallel to cubes
-  slowTask(40, 100); // rotate to face cube
+  slowTask(42, 100); // rotate to face cube
   intakeAuto(9); // start intake
-  driveTask(110, 32, 250); // drive into cubes
+  driveTask(110, 32, 150); // drive into cubes
   // rotateTask(119, 0); // rotate towards corner goal
-  slowTask(-110, 0);
-  driveTask(115, 43, 50); // drive forward to drop inside the corner goal
+  slowTask(-115, 0);
+  driveAccel(160, 43, 50); // drive forward to drop inside the corner goal
   dropCubes(); // drop cubes
 }
 
@@ -119,6 +119,6 @@ void skills() { // 48 maybe please.
 }
 
 void test(){
-  slowTask(-90, 0);
-  driveTask(50, 10, 0);
+  slowTask(130, 0);
+  driveAccel(160, 43, 250);
 }

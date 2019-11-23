@@ -91,6 +91,57 @@ void driveTask(int speed, double distance, int ms){
   pros::delay(ms);
 }
 
+void driveAccel(int speed, double distance, int ms){
+  bool driving = true;
+  double sp = distance /= 12.8;
+  double cv;
+  double kp = 250;
+  double kd = 100;
+  double ki = 4;
+  double error = 0;
+  double prev_error;
+  int velocity = 0;
+  double derivative;
+  double integral;
+
+  back_left.tare_position();
+  back_right.tare_position();
+
+  while (driving) {
+    cv = (back_left.get_position() - back_right.get_position()) / 2;
+
+    error = sp - cv;
+    derivative = error - prev_error;
+    integral += error;
+    prev_error = error;
+    velocity = error*kp + derivative*kd + integral*ki;
+
+    if(fabs(error) > fabs(sp)*0.75) {
+      kp = 0;
+      ki = 2.5;
+      kd = 0;
+    }
+    else {
+      kp = 190;
+      ki = 0;
+      kd = 100;
+    }
+
+    if(velocity > speed) {velocity = speed;}
+    if(velocity < -speed) {velocity = -speed;}
+    if(velocity <= 20 && velocity > 0) {velocity = 20;}
+    if(velocity >= -20 && velocity < 0) {velocity = -20;}
+
+    drive(velocity);
+
+    if(error <= 0.05 && error >= -0.05) {driving = false;}
+
+    pros::delay(20);
+  }
+  drive(0);
+  pros::delay(ms);
+}
+
 void rotateTask(double rot, int ms) {
   bool driving = true;
   rot /= 360;
@@ -164,7 +215,7 @@ void slowTask(double rot, int ms) {
         kd = 0;
       }
       else {
-        kp = 180;
+        kp = 150;
         ki = 0;
         kd = 100;
       }

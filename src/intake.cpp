@@ -70,11 +70,14 @@ void tiltMove(double rot) { // this is auton pretty much change lol
     cv = tilt.get_position();
 
     error = (sp - cv);
-    velocity = error*44.4+10; // change to 200 as max val
+    velocity = error*kp;
+
+    if(velocity > 200) {velocity = 200;}
+    if(velocity < 40) {velocity = 40;}
 
     tilt.move_velocity(velocity);
 
-    if(error <= 0.1) {
+    if(error <= 0.01) {
       tilt.move_velocity(0);
       break;
     }
