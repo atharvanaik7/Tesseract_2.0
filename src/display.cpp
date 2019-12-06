@@ -164,6 +164,29 @@ void redbigscr() {
   // label = lv_label_create(btn1, NULL);
   // lv_label_set_text(label, "RED FRONT");
 }
+void redbig1scr() {
+  // init display
+  static lv_style_t background_style;
+  lv_style_copy(&background_style, &lv_style_plain);
+  background_style.body.main_color = LV_COLOR_GREEN;
+  background_style.body.grad_color = LV_COLOR_GREEN;
+
+  lv_obj_t *scr = lv_obj_create(NULL, NULL);
+  lv_obj_set_style(scr, &background_style);
+  lv_scr_load(scr);
+
+  // styles
+  static lv_style_t title_style;
+  lv_style_copy(&title_style, &lv_style_plain);
+  title_style.text.font = &lv_font_dejavu_20;
+  title_style.text.color = LV_COLOR_BLACK;
+
+  //text
+  lv_obj_t *tesseract_title = lv_label_create(scr, NULL);
+  lv_obj_set_style(tesseract_title, &title_style);
+  lv_label_set_text(tesseract_title, "1 POINT");
+  lv_obj_align(tesseract_title, NULL, LV_ALIGN_CENTER, 0, 0);
+}
 void bluebigscr() {
   // init display
   static lv_style_t background_style;
@@ -184,7 +207,7 @@ void bluebigscr() {
   //text
   lv_obj_t *tesseract_title = lv_label_create(scr, NULL);
   lv_obj_set_style(tesseract_title, &title_style);
-  lv_label_set_text(tesseract_title, "RED BIG");
+  lv_label_set_text(tesseract_title, "BLUE BIG");
   lv_obj_align(tesseract_title, NULL, LV_ALIGN_CENTER, 0, 0);
 
   //button
@@ -218,7 +241,7 @@ void skillsscr() {
   static lv_style_t title_style;
   lv_style_copy(&title_style, &lv_style_plain);
   title_style.text.font = &lv_font_dejavu_20;
-  title_style.text.color = LV_COLOR_BLACK;
+  title_style.text.color = LV_COLOR_WHITE;
 
   //text
   lv_obj_t *tesseract_title = lv_label_create(scr, NULL);

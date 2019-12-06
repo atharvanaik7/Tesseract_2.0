@@ -250,6 +250,7 @@ void brakeMode() {
   front_right.set_brake_mode(MOTOR_BRAKE_HOLD);
   back_left.set_brake_mode(MOTOR_BRAKE_HOLD);
   back_right.set_brake_mode(MOTOR_BRAKE_HOLD);
+  tilt.set_brake_mode(MOTOR_BRAKE_BRAKE);
 }
 
 void coastMode() {

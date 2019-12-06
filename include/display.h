@@ -6,6 +6,7 @@ void redsmallscr();
 void bluesmallscr();
 void bluebigscr();
 void redbigscr();
+void redbig1scr();
 void skillsscr();
 
 #endif

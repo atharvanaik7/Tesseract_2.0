@@ -26,7 +26,7 @@ void initialize() {
 
 	if(pros::competition::is_disabled()) { // change to is_disabled()
 		while(selsensor.get_value() == 0) {
-			 if(rightsensor.get_new_press() == 1 && count < 5) { // change count number when adding more
+			 if(rightsensor.get_new_press() == 1 && count < 6) { // change count number when adding more
 					count += 1;
 				}
 			 else if(leftsensor.get_new_press() == 1 && count > 1) {
@@ -45,12 +45,18 @@ void initialize() {
 				 bluebigscr();
 			 }
 			 else if(count == 5) {
+				 redbig1scr();
+			 }
+			 else if(count == 6) {
 				 skillsscr();
 			 }
 		 pros::delay(10);
 	 }
  }
 	display();
+	  // profileController.generatePath({Point{0_in, 0_in, 0_deg}, Point{36_in, 20_in, 0_deg}}, "A");
+	  // profileController.setTarget("A");
+	  // profileController.waitUntilSettled();
 }
 
 /**
@@ -85,16 +91,17 @@ void competition_initialize() {}
 void autonomous() {
 	brakeMode();
 
-	bluesmall();
+	// redsmall();
 	// switch(count) {
-	//   case 1: redsmall(); break;
-	//   case 2: redbig(); break;
+	//  	case 1: redsmall(); break;
+	//  	case 2: redbig(); break;
 	// 	case 3: bluesmall(); break;
 	// 	case 4: bluebig(); break;
-	// 	case 5: skills(); break;
+	//  	case 5: redbig1(); break;
+	// 	case 6: skills(); break;
 	// }
 
-	// skills();
+	redbig();
 
 }
 

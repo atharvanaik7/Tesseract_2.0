@@ -26,12 +26,12 @@ pros::Controller master(CONTROLLER_MASTER);
 
 void tiltOp() {
   pros::Controller master(CONTROLLER_MASTER);
-  if(master.get_digital(DIGITAL_L1) == 1){
+  if(master.get_digital(DIGITAL_A) == 1){
     tiltAuto();
     // tiltAuto();
 
   }
-  else if(master.get_digital(DIGITAL_L2) == 1){
+  else if(master.get_digital(DIGITAL_B) == 1){
     tilt.move(-127);
 
   }

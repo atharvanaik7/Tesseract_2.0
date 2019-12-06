@@ -44,6 +44,7 @@
 #include "arm.h"
 #include "display.h"
 #include "macros.h"
+#include "okapi/api.hpp"
 // #include "okapi/api.hpp"
 
 extern int auton_num;
@@ -58,6 +59,7 @@ extern pros::Motor intakeleft;
 extern pros::Motor arm;
 
 
+
 // extern pros::Controller master;
 
 
@@ -67,7 +69,6 @@ extern pros::Motor arm;
 /**
  * You should add more #includes here
  */
-#include "okapi/api.hpp"
 //#include "pros/api_legacy.h"
 
 /**
