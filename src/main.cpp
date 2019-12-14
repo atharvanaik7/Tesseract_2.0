@@ -92,16 +92,16 @@ void autonomous() {
 	brakeMode();
 
 	// redsmall();
-	// switch(count) {
-	//  	case 1: redsmall(); break;
-	//  	case 2: redbig(); break;
-	// 	case 3: bluesmall(); break;
-	// 	case 4: bluebig(); break;
-	//  	case 5: redbig1(); break;
-	// 	case 6: skills(); break;
-	// }
-
-	redbig();
+	switch(count) {
+		case 1: redsmall(); break;
+		case 2: redbig(); break;
+		case 3: bluesmall(); break;
+		case 4: bluebig(); break;
+		case 5: redbig1(); break;
+		case 6: skills(); break;
+	}
+	// redsmall();
+	// bluesmall();
 
 }
 

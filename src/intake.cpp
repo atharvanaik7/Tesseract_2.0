@@ -5,14 +5,14 @@ void intakeOp() {
 pros::Controller master(CONTROLLER_MASTER);
 
   if(master.get_digital(DIGITAL_R2) == 1) { //outake
-    if(arm.get_position() <= -2) {
-      intakeright.move(-63);
-      intakeleft.move(63);
-    }
-    else {
+    // if(arm.get_position() <= -2) {
+    //   intakeright.move(-63);
+    //   intakeleft.move(63);
+    // }
+    // else {
       intakeright.move(-80);
       intakeleft.move(80);
-    }
+    // }
   }
   else if(master.get_digital(DIGITAL_R1) == 1){ //intake
     intakeright.move(127);
@@ -85,7 +85,7 @@ void tiltMove(double rot) { // this is auton pretty much change lol
   }
 }
 void tiltBack() {
-  tilt.move_absolute(0, 180);
+  tilt.move_absolute(0, 200);
 }
 
 

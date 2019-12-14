@@ -7,8 +7,8 @@ double drive_multiplier = 0;
 void driveOp() {
   pros::Controller master(CONTROLLER_MASTER);
 
-  if(arm.get_position() <= -2) {
-    drive_multiplier = 0.4;
+  if(tilt.get_position() >= 1) {
+    drive_multiplier = 0.5;
   }
   else {
     drive_multiplier = 0.75;
@@ -182,7 +182,7 @@ void rotateTask(double rot, int ms) {
   pros::delay(ms);
 }
 
-void slowTask(double rot, int ms) {
+void rotateTask(double rot, int speed, int ms) {
   bool driving = true;
   rot /= 360;
   double sp;
@@ -223,8 +223,8 @@ void slowTask(double rot, int ms) {
 
     velocity = error*kp + derivative*kd + integral*ki;
 
-    if(velocity > 180) {velocity = 180;}
-    else if(velocity < -180) {velocity = -180;}
+    if(velocity > speed) {velocity = speed;}
+    else if(velocity < -speed) {velocity = -speed;}
     // else if (velocity <= 20 && velocity > 0) { velocity = 20; }
     // else if (velocity >= -20 && velocity < 0) { velocity = -20; }
 
