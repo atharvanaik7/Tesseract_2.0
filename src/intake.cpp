@@ -5,14 +5,9 @@ void intakeOp() {
 pros::Controller master(CONTROLLER_MASTER);
 
   if(master.get_digital(DIGITAL_R2) == 1) { //outake
-    // if(arm.get_position() <= -2) {
-    //   intakeright.move(-63);
-    //   intakeleft.move(63);
-    // }
-    // else {
       intakeright.move(-80);
       intakeleft.move(80);
-    // }
+
   }
   else if(master.get_digital(DIGITAL_R1) == 1){ //intake
     intakeright.move(127);
@@ -45,7 +40,7 @@ double error = 0;
 int velocity = 0;
 double kp = 75;
 
-void tiltAuto(){ // opcontrol change this
+void tiltAuto(){ // opcontrol
   double sp = 2.0;
     cv = tilt.get_position();
 
@@ -64,7 +59,7 @@ void tiltAuto(){ // opcontrol change this
 }
 
 
-void tiltMove(double rot) { // this is auton pretty much change lol
+void tiltMove(double rot) { // auton
   double sp = rot;
   while (cv <= 2) {
     cv = tilt.get_position();
@@ -76,6 +71,11 @@ void tiltMove(double rot) { // this is auton pretty much change lol
     if(velocity < 40) {velocity = 40;}
 
     tilt.move_velocity(velocity);
+
+    /* if(cv >= 1.2 && cv <= 1.4) {
+          intakeleft.move_velocity(-200);
+          intakeright.move_velocity(200);
+     } */
 
     if(error <= 0.01) {
       tilt.move_velocity(0);

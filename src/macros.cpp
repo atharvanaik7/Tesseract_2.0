@@ -1,9 +1,9 @@
 #include "main.h"
 
 void dropCubes() {
-  intakeAuto(-0.7); // outtake
+  intakeAuto(-0.72); // outtake
   tiltMove(1.9); // tilt to drop cubes
-  intakeAuto(1);
+  intakeAuto(0.8);
   pros::delay(400);
   intakeSpeed(-5, 150); // outtake/drop
   driveTask(200, -20, 0); // drive back

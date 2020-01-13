@@ -7,7 +7,7 @@ double drive_multiplier = 0;
 void driveOp() {
   pros::Controller master(CONTROLLER_MASTER);
 
-  if(tilt.get_position() >= 1) {
+  if(arm.get_position() <= -1) {
     drive_multiplier = 0.5;
   }
   else {
@@ -54,7 +54,7 @@ void rotate(int vel) {
   back_right.move_velocity(vel);
 }
 
-void driveTask(int speed, double distance, int ms){
+void driveTask(int speed, double distance, int ms){ // normal drive function
   bool driving = true;
   double sp = distance /= 12.8;
   double cv;
@@ -91,7 +91,7 @@ void driveTask(int speed, double distance, int ms){
   pros::delay(ms);
 }
 
-void driveAccel(int speed, double distance, int ms){
+void driveAccel(int speed, double distance, int ms){ // integral at beginning for accel
   bool driving = true;
   double sp = distance /= 12.8;
   double cv;
@@ -142,7 +142,7 @@ void driveAccel(int speed, double distance, int ms){
   pros::delay(ms);
 }
 
-void rotateTask(double rot, int ms) {
+void rotateTask(double rot, int ms) { // normal turn
   bool driving = true;
   rot /= 360;
   double sp;
@@ -182,7 +182,7 @@ void rotateTask(double rot, int ms) {
   pros::delay(ms);
 }
 
-void rotateTask(double rot, int speed, int ms) {
+void rotateTask(double rot, int speed, int ms) { // overflow for rotate with integral
   bool driving = true;
   rot /= 360;
   double sp;

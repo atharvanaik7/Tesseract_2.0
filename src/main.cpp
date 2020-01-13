@@ -91,7 +91,7 @@ void competition_initialize() {}
 void autonomous() {
 	brakeMode();
 
-	// redsmall();
+	// bluesmall();
 	switch(count) {
 		case 1: redsmall(); break;
 		case 2: redbig(); break;
@@ -118,6 +118,9 @@ void autonomous() {
  * operator control task will be stopped. Re-enabling the robot will restart the
  * task, not resume it from where it left off.
  */
+
+
+
 void opcontrol() {
 	intakeleft.set_brake_mode(MOTOR_BRAKE_BRAKE);
 	intakeright.set_brake_mode(MOTOR_BRAKE_BRAKE);
@@ -129,7 +132,6 @@ void opcontrol() {
 		intakeOp();
 		tiltOp();
 		armOp();
-
 
 		pros::delay(20);
 	}

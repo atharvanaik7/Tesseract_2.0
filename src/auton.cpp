@@ -2,7 +2,7 @@
 
 void redsmall() { // test for consistency
   intakeSpeed(-7, 200); // start intake to deploy
-  pros::delay(1500); // let trays deploy completely
+  pros::delay(1650); // let trays deploy completely
   intakeAuto(10); // start intake
   driveTask(100, 36, 0); // drive forward to suck up cubes
   // driveTask(125, -6, 100); // drive back
@@ -10,28 +10,63 @@ void redsmall() { // test for consistency
   driveTask(160, -37, 50); // drive back to be parallel to cubes
   rotateTask(-43, 180, 100); // rotate to face cube 42
   intakeAuto(9); // start intake
-  driveTask(105, 29, 200); // drive into cubes
+  driveTask(105, 29, 300); // drive into cubes
   // rotateTask(119, 0); // rotate towards corner goal
-  rotateTask(126.7, 100, 100);
-  driveAccel(160, 39.8, 50); // drive forward to drop inside the corner goal
+  rotateTask(125.3, 100, 100); // change deg
+  driveAccel(160, 39.2, 50); // drive forward to drop inside the corner goal
   dropCubes(); // drop cubes
+
+  ///////////////////////////////////////
+
+  // intakeSpeed(-7, 200); // start intake to deploy
+  // pros::delay(1500); // let trays deploy completely
+  // intakeAuto(10); // start intake
+  // driveTask(100, 42, 200); // drive forward to suck up cubes
+  // driveTask(100, -26, 0);
+  // rotateTask(128, 80, 0);
+  // driveTask(100, 11, 0);
+  // intakeAuto(-0.75); // outtake
+  // pros::delay(300);
+  // tiltMove(1.9); // tilt to drop cubes
+  // intakeAuto(0.3);
+  // pros::delay(400);
+  // intakeSpeed(-5, 150); // outtake/drop
+  // pros::delay(400);
+  // driveTask(200, -20, 0); // drive back
 }
 
 void bluesmall(){ // test for consistency
   intakeSpeed(-7, 200); // start intake to deploy
-  pros::delay(1500); // let trays deploy completely
+  pros::delay(1650); // let trays deploy completely
   intakeAuto(10); // start intake
   driveTask(100, 36, 0); // drive forward to suck up cubes
   // driveTask(125, -6, 100); // drive back
   rotateTask(-33, 180, 100); // rotate to angle for next set of cubes
-  driveTask(160, -37, 50); // drive back to be parallel to cubes
-  rotateTask(40, 180, 100); // rotate to face cube
+  driveTask(160, -37, 0); // drive back to be parallel to cubes
+  rotateTask(36, 180, 100); // rotate to face cube
   intakeAuto(9); // start intake
-  driveTask(105, 29, 150); // drive into cubes
+  driveTask(105, 29, 300); // drive into cubes
   // rotateTask(119, 0); // rotate towards corner goal
-  rotateTask(-120.4, 100, 100);
-  driveAccel(160, 38.2, 50); // drive forward to drop inside the corner goal 38.5
+  rotateTask(-135, 80, 100); // 121.5 100
+  driveAccel(160, 38, 50); // drive forward to drop inside the corner goal 38.5
   dropCubes(); // drop cubes
+
+  ////////////////////////////////////////////
+
+  // intakeSpeed(-7, 200); // start intake to deploy
+  // pros::delay(1500); // let trays deploy completely
+  // intakeAuto(10); // start intake
+  // driveTask(100, 50, 200); // drive forward to suck up cubes
+  // driveTask(100, -34, 0);
+  // rotateTask(-126, 80, 0);
+  // driveTask(100, 10, 0);
+  // intakeAuto(-0.7); // outtake
+  // tiltMove(0.5); // tilt to drop cubes
+  // intakeAuto(1.9);
+  // pros::delay(400);
+  // intakeSpeed(-5, 150); // outtake/drop
+  // pros::delay(200);
+  // driveTask(200, -20, 0); // drive back
 }
 
 void redbig() { // good
@@ -42,11 +77,11 @@ void redbig() { // good
   driveTask(70, -5, 500);
   driveTask(70, 20, 200);
   driveTask(120, -28, 0);
-  rotateTask(-90, 180, 0);
+  rotateTask(-92, 180, 0);
   intakeAuto(7);
-  driveTask(120, 22, 0);
-  rotateTask(-33, 180, 0);
-  driveTask(70, 7, 200);
+  driveTask(120, 21, 0);
+  rotateTask(-34, 180, 0);
+  driveTask(70, 9, 200);
   intakeAuto(-0.7); // outtake
   tiltMove(1.9); // tilt to drop cubes
   intakeAuto(0.9);
@@ -94,7 +129,7 @@ void skills() { // 24 maybe please. Redo after tracker wheels
   intakeAuto(9); // start intake
   driveTask(105, 29, 350); // drive into cubes
   // rotateTask(119, 0); // rotate towards corner goal
-  rotateTask(127, 100, 100); // 126.5
+  rotateTask(125, 70, 80); // 126.5
   driveAccel(160, 39.2, 50); // drive forward to drop inside the corner goal
   intakeAuto(-0.7); // outtake
   tiltMove(1.9); // tilt to drop cubes // first stack

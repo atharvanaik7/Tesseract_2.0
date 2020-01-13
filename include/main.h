@@ -33,9 +33,9 @@
  * For instance, you can do `4_mtr = 50` to set motor 4's target velocity to 50
  */
 #define PROS_USE_LITERALS
-#define RIGHT_SENSOR 1
-#define LEFT_SENSOR 2
-#define SELECTOR 3
+#define RIGHT_SENSOR 6
+#define LEFT_SENSOR 7
+#define SELECTOR 8
 
 #include "api.h"
 #include "drive.h"
@@ -45,6 +45,7 @@
 #include "display.h"
 #include "macros.h"
 #include "okapi/api.hpp"
+#include <cmath>
 // #include "okapi/api.hpp"
 
 extern int auton_num;

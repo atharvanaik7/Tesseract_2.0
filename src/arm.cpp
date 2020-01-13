@@ -5,10 +5,10 @@ void armOp() {
   pros::Controller master(CONTROLLER_MASTER);
   if(master.get_digital(DIGITAL_L1) == 1){ // up
     arm.move(-127);
-    if(tilt.get_position() <= 1.3) {
+    if(tilt.get_position() <= 0.5) {
       tilt.move(127);
     }
-    else if(tilt.get_position() > 1.35) {
+    else if(tilt.get_position() > 0.55) {
       tilt.move(-60);
     }
     else {
@@ -31,7 +31,7 @@ void armOp() {
   }
 }
 
-void armAuto(double rot, int speed) { // @param enter pos rot for move up enter neg for move down
+void armAuto(double rot, int speed) { // enter pos rot for move up enter neg for move down
   // if(rot > 0) {
   //   tilt.move_relative(1.4, 200);
   // }
